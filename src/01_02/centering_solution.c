@@ -4,7 +4,6 @@
 void center_text(int width, char *text)
 {
 	int len,indent,s;
-
 	len = strlen(text);			/* text length */
 	indent = (width-len)/2;		/* spaces required to indent */
 	for( s=0; s<indent; s++ )	/* indent */
