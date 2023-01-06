@@ -6,6 +6,25 @@ char *ordinal(int v)
 	   - create this function
 	   - this code won't run with out it!
 	 */
+	char *str = NULL;
+	//char *r;
+	if(v % 20 == 1){
+		str = "st";
+	}
+	else if (v % 20 == 2)
+	{
+		str = "nd";
+	}
+	else if (v % 20 == 3)
+	{
+		str = "rd";
+	}
+	else
+	{
+		str = "th";
+	}
+	return str;
+
 }
 
 int main()
