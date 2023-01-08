@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+//#include <stdbool.h>
+
 
 #define PSIZE 20
 
@@ -16,8 +18,10 @@ int main()
 		"Maybellene", "Hound Dog", "Let It Be",
 		"A Change Is Gonna Come"
 	};
+	//bool recent[PSIZE];
+	int recent[PSIZE] ={0};
 	int frequency[PSIZE];
-	int x,r,count;
+	int x, r, count;
 
 	/* initialize */
 	srand( (unsigned)time(NULL) );
@@ -32,12 +36,24 @@ int main()
 	{
 		/* does r appear in recent[]? */
 		r = rand() % PSIZE;		/* random value */
-		printf("%3d: Now Playing '%s'\n",
+		if (recent[r] == 0){
+			printf("%3d: Now Playing '%s'\n",
 				count+1,
 				playlist[r]
 			  );
-		frequency[r]++;
-		count++;
+				recent[r] = count + 1;
+				frequency[r]++;
+				count++;
+		}
+		else if ((count + 1) - recent[r] > 15)
+		{
+				printf("%3d: Now Playing '%s'\n",
+							 count + 1,
+							 playlist[r]);
+				recent[r] = count + 1;
+				frequency[r]++;
+				count++;
+		}
 	}
 
 	puts("Song frequency:");
